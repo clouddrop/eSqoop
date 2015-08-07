@@ -1,0 +1,48 @@
+sqoop import --connect jdbc:mysql://192.168.1.3/test --table new_table  -m 2   --username root --target-dir /sqoop/1
+
+sudo sqoop import --connect jdbc:mysql://192.168.1.2/test --table new_table    --username root --hive-import  --target-dir /sqoop/2
+
+
+
+sudo sqoop import --connect jdbc:mysql://192.168.1.2/test --table new_table    --username root --hive-import
+
+
+
+sqoop export --connect jdbc:mysql://192.168.1.2/test  --table export_sqoop   --export-dir /sqoop/1 --username root 
+
+--works
+sqoop import --connect jdbc:mysql://192.168.1.3/test  --username root --table new_table  --hbase-table hbase_sqoop --column-family cf --hbase-row-key id --hbase-create-table
+
+
+
+sqoop import --connect jdbc:mysql://192.168.1.3/test --username root  --table new_table --hbase-table sqooptable --column-family c
+--hbase-row-key <row_key_column>
+--hbase-create-table
+
+
+
+
+GRANT ALL PRIVILEGES ON test.* to root@'192.168.1.5' ;
+GRANT ALL PRIVILEGES ON test.* to root@'192.168.1.4' ;
+
+delimiter $$
+
+CREATE TABLE `export_sqoop` (
+  `idnew_table` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idnew_table`)
+
+
+) 
+
+select * from export_sqoop;
+TRUNCATE table   export_sqoop;
+
+select * from new_table;
+
+
+
+
+
+mdgryn@yahoo.com
+antonyrobin.be@gmail.com
